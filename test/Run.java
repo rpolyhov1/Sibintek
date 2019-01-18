@@ -2,29 +2,28 @@ package test;
 
 import java.io.IOException;
 import org.openqa.selenium.WebDriver;
-
 /** 
- * Программа для загрузки с cian.ru результатов поиска аренды квартиры
- * Исходный файл Data1.xls(файл расширяемый (в соответсвии с потребностями))
- * deal_type- тип сделки,offer_type- тип предложения,room1-room6: 1 комнатная -6 комнатная квартира, room7,room9 свободная планировка, студия. 
- * Результаты поиска выгружаются в каталог "Result" в xlsx файл, в формате сайта cian.ru Для каждого запроса отдельный файл.
- * @autor Полюхов Роман
+ * РџСЂРѕРіСЂР°РјРјР° РґР»СЏ Р·Р°РіСЂСѓР·РєРё СЃ cian.ru СЂРµР·СѓР»СЊС‚Р°С‚РѕРІ РїРѕРёСЃРєР° Р°СЂРµРЅРґС‹ РєРІР°СЂС‚РёСЂС‹
+ * РСЃС…РѕРґРЅС‹Р№ С„Р°Р№Р» Data1.xls(С„Р°Р№Р» СЂР°СЃС€РёСЂСЏРµРјС‹Р№ (РІ СЃРѕРѕС‚РІРµС‚СЃРІРёРё СЃ РїРѕС‚СЂРµР±РЅРѕСЃС‚СЏРјРё))
+ * deal_type- С‚РёРї СЃРґРµР»РєРё,offer_type- С‚РёРї РїСЂРµРґР»РѕР¶РµРЅРёСЏ,room1-room6: 1 РєРѕРјРЅР°С‚РЅР°СЏ -6 РєРѕРјРЅР°С‚РЅР°СЏ РєРІР°СЂС‚РёСЂР°, room7,room9 СЃРІРѕР±РѕРґРЅР°СЏ РїР»Р°РЅРёСЂРѕРІРєР°, СЃС‚СѓРґРёСЏ. 
+ * Р РµР·СѓР»СЊС‚Р°С‚С‹ РїРѕРёСЃРєР° РІС‹РіСЂСѓР¶Р°СЋС‚СЃСЏ РІ РєР°С‚Р°Р»РѕРі "Result" РІ xlsx С„Р°Р№Р», РІ С„РѕСЂРјР°С‚Рµ СЃР°Р№С‚Р° cian.ru Р”Р»СЏ РєР°Р¶РґРѕРіРѕ Р·Р°РїСЂРѕСЃР° РѕС‚РґРµР»СЊРЅС‹Р№ С„Р°Р№Р».
+ * @autor РџРѕР»СЋС…РѕРІ Р РѕРјР°РЅ
  * @version 0.1
 */
 public class Run {
 	static WebDriver driver;
-	static String fileName = "Data1.xls";// наименование файла с данными
-	static String linkForPrint = "https://www.cian.ru/export/xls/offers/?currency=2&engine_version=2";// базовая строка get запроса печати в xls файл результатов поиска
+	static String fileName = "Data1.xls";// РЅР°РёРјРµРЅРѕРІР°РЅРёРµ С„Р°Р№Р»Р° СЃ РґР°РЅРЅС‹РјРё
+	static String linkForPrint = "https://www.cian.ru/export/xls/offers/?currency=2&engine_version=2";// Р±Р°Р·РѕРІР°СЏ СЃС‚СЂРѕРєР° get Р·Р°РїСЂРѕСЃР° РїРµС‡Р°С‚Рё РІ xls С„Р°Р№Р» СЂРµР·СѓР»СЊС‚Р°С‚РѕРІ РїРѕРёСЃРєР°
 
 	public static void main(String[] args) throws IOException {
 
 		FileOperation fileOperation = new FileOperation();
-		fileOperation.readFromXLS(fileName); //читаем файл
+		fileOperation.readFromXLS(fileName); //С‡РёС‚Р°РµРј С„Р°Р№Р»
 
-		//для каждой не пустой строки xls страницы 
+		//РґР»СЏ РєР°Р¶РґРѕР№ РЅРµ РїСѓСЃС‚РѕР№ СЃС‚СЂРѕРєРё xls СЃС‚СЂР°РЅРёС†С‹ 
 		for (int position : fileOperation.getSetId()) {
 			if (position != 0)
-				DriverManager.getDriver().get(fileOperation.getLink(position));// выгружаем отчет по всем строкам раннее считанного файла (кроме строки с "шапкой")	
+				DriverManager.getDriver().get(fileOperation.getLink(position));// РІС‹РіСЂСѓР¶Р°РµРј РѕС‚С‡РµС‚ РїРѕ РІСЃРµРј СЃС‚СЂРѕРєР°Рј СЂР°РЅРЅРµРµ СЃС‡РёС‚Р°РЅРЅРѕРіРѕ С„Р°Р№Р»Р° (РєСЂРѕРјРµ СЃС‚СЂРѕРєРё СЃ "С€Р°РїРєРѕР№")	
 		}
 
 	}
