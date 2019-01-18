@@ -19,7 +19,7 @@ public class FileOperation {
 	static ArrayList<String> parameter;
 	static ArrayList<String> valueParameter;
 
-	// операция чтения файла в массив
+	// РѕРїРµСЂР°С†РёСЏ С‡С‚РµРЅРёСЏ С„Р°Р№Р»Р° РІ РјР°СЃСЃРёРІ
 	protected void readFromXLS(String fileName) throws IOException {
 
 		try {
@@ -28,9 +28,9 @@ public class FileOperation {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		Sheet sheet = workBook.getSheetAt(0);//считываем первый лист из xls файла
+		Sheet sheet = workBook.getSheetAt(0);//СЃС‡РёС‚С‹РІР°РµРј РїРµСЂРІС‹Р№ Р»РёСЃС‚ РёР· xls С„Р°Р№Р»Р°
 
-		//Считываем массив данных с каждой строки листа
+		//РЎС‡РёС‚С‹РІР°РµРј РјР°СЃСЃРёРІ РґР°РЅРЅС‹С… СЃ РєР°Р¶РґРѕР№ СЃС‚СЂРѕРєРё Р»РёСЃС‚Р°
 		for (Row row : sheet) {
 			ArrayList<String> request = new ArrayList<>();
 			for (int i = 0; i < row.getLastCellNum(); i++) {
@@ -41,7 +41,7 @@ public class FileOperation {
 
 	}
 
-	// операция получения строки get запроса к cian.ru из одной строки в файле 
+// РѕРїРµСЂР°С†РёСЏ РїРѕР»СѓС‡РµРЅРёСЏ СЃС‚СЂРѕРєРё get Р·Р°РїСЂРѕСЃР° Рє cian.ru РёР· РѕРґРЅРѕР№ СЃС‚СЂРѕРєРё РІ С„Р°Р№Р»Рµ 
 	protected String getLink(int position) {
 		String str = Run.linkForPrint;
 		parameter = listfromFile.get(0);
@@ -57,12 +57,12 @@ public class FileOperation {
 
 	}
 
-	// сервисная операция получения номеров строк 
+	// СЃРµСЂРІРёСЃРЅР°СЏ РѕРїРµСЂР°С†РёСЏ РїРѕР»СѓС‡РµРЅРёСЏ РЅРѕРјРµСЂРѕРІ СЃС‚СЂРѕРє 
 	protected Set<Integer> getSetId() {
 		return listfromFile.keySet();
 	}
 
-	// сервисная операция форматирование  данных
+	// СЃРµСЂРІРёСЃРЅР°СЏ РѕРїРµСЂР°С†РёСЏ С„РѕСЂРјР°С‚РёСЂРѕРІР°РЅРёРµ  РґР°РЅРЅС‹С…
 	private String getValue(Cell cell) {
 		CellType cellType = cell.getCellType();
 		switch (cellType) {
