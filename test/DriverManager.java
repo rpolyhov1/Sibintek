@@ -16,7 +16,7 @@ public class DriverManager {
 			chromePrefs.put("download.default_directory", new File("").getAbsolutePath() + "\\RESULT\\");
 			chromePrefs.put("disable-popup-blocking", "true");
 			options.setExperimentalOption("prefs", chromePrefs);
-			//options.addArguments("--headless");//headless: запуск без пользовательского интерфейса
+			//options.addArguments("--headless");//headless: Р·Р°РїСѓСЃРє Р±РµР· РїРѕР»СЊР·РѕРІР°С‚РµР»СЊСЃРєРѕРіРѕ РёРЅС‚РµСЂС„РµР№СЃР°
 			driver = new ChromeDriver(options);
 		}
 		return driver;
