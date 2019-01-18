@@ -3,6 +3,14 @@ package test;
 import java.io.IOException;
 import org.openqa.selenium.WebDriver;
 
+/** 
+ * Программа для загрузки с cian.ru результатов поиска аренды квартиры
+ * Исходный файл Data1.xls(файл расширяемый (в соответсвии с потребностями))
+ * deal_type- тип сделки,offer_type- тип предложения,room1-room6: 1 комнатная -6 комнатная квартира, room7,room9 свободная планировка, студия. 
+ * Результаты поиска выгружаются в каталог "Result" в xlsx файл, в формате сайта cian.ru Для каждого запроса отдельный файл.
+ * @autor Полюхов Роман
+ * @version 0.1
+*/
 public class Run {
 	static WebDriver driver;
 	static String fileName = "Data1.xls";// наименование файла с данными
